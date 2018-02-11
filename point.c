@@ -76,7 +76,7 @@ int point_getCoordinateY (Point *pp){
   }
 
 }
-char point_get_symbol (Point *pp){
+char point_getSymbol (Point *pp){
   if (pp == NULL){
     return 0;
   }
