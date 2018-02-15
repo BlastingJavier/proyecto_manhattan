@@ -6,9 +6,9 @@ struct _Point {
 char symbol;
 int x;
 int y;
-}
+};
 
-Point * point_ini (int x, int y,char s){
+Point *point_ini (int x, int y,char symbol){
   Point *pp;
   pp = (Point*)malloc(sizeof(Point));
   if (pp == NULL){
@@ -17,7 +17,7 @@ Point * point_ini (int x, int y,char s){
   else {
     pp->x = x;
     pp->y = y;
-    pp->s = s;
+    pp->symbol = symbol;
 
   }
   return pp;
@@ -31,7 +31,7 @@ void point_destroy (Point *pp){
     return;
   }
 }
-status point_setCoordinateX (Point *pp ,const int x){
+Status point_setCoordinateX (Point *pp ,const int x){
   if (pp == NULL){
     return ERROR;
   }
@@ -40,7 +40,7 @@ status point_setCoordinateX (Point *pp ,const int x){
     return OK;
   }
 }
-status point_setCoordinateY (Point *pp ,const int y){
+Status point_setCoordinateY (Point *pp ,const int y){
   if (pp == NULL){
     return ERROR;
   }
@@ -50,7 +50,7 @@ status point_setCoordinateY (Point *pp ,const int y){
   }
 }
 
-status point_setSymbol (Point *pp,const char symbol){
+Status point_setSymbol (Point *pp,const char symbol){
   if (pp == NULL){
     return ERROR;
   }
@@ -59,7 +59,7 @@ status point_setSymbol (Point *pp,const char symbol){
     return OK;
   }
 }
-int point_getCoordinateX (Point *pp){
+int point_getCoordinateX (const Point *pp){
   if (pp == NULL){
     return 0;
   }
@@ -67,7 +67,7 @@ int point_getCoordinateX (Point *pp){
     return pp->x;
   }
 }
-int point_getCoordinateY (Point *pp){
+int point_getCoordinateY (const Point *pp){
   if (pp == NULL){
     return 0;
   }
@@ -76,7 +76,7 @@ int point_getCoordinateY (Point *pp){
   }
 
 }
-char point_getSymbol (Point *pp){
+char point_getSymbol (const Point *pp){
   if (pp == NULL){
     return 0;
   }
@@ -96,12 +96,12 @@ Point * point_copy (const Point *pp1){
     return NULL;
   }
   else {
-    auxx = point_getCoordinateX;
-    auxy = point_getCoordinateY;
-    auxsymbol = point_get_symbol;
+    auxx =  point_getCoordinateX(pp1);
+    auxy =  point_getCoordinateY(pp1);
+    auxsymbol =  point_getSymbol(pp1);
   }
   copia = point_ini(auxx,auxy,auxsymbol);
-
+  return copia;
 }
 int point_print (FILE *pf ,const Point *pp){
   if (pp == NULL){
