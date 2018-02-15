@@ -2,7 +2,6 @@
 * File: types.h
 * Author: Profesores de PROG2
 */
-#error "TYPES.H.ERR"
 #ifndef TYPES_H
 #define TYPES_H
 typedef enum {
